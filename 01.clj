@@ -38,5 +38,10 @@
 
 (sum-all-quintuple-or-triple-below-below 100000000)
 
+(defn sum-all-quintuple-or-triple-below-below [x]
+  (->>
+   x
+   (all-quintuple-or-triple-below)
+   (reduce +)))
 
-
+(sum-all-quintuple-or-triple-below-below 10)
