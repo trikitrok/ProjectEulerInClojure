@@ -45,3 +45,13 @@
    (reduce +)))
 
 (sum-all-quintuple-or-triple-below-below 10)
+
+(def all-quintuples-or-triples
+  (filter
+   quintuple-or-triple?
+   (range)))
+
+(defn below [num]
+  (partial take-while (partial > num)))
+
+(reduce + ((below 10) all-quintuples-or-triples))
