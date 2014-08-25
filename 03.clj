@@ -1,12 +1,13 @@
 (def factor?
-  (comp zero? (partial rem)))
+  (comp zero? rem))
 
-(defn prime-factors [n]
-  (loop [m 2, n n, factors #{}]
+(defn prime-factors [number]
+  (loop [number number prime 2 factors #{}]
     (cond
-     (> m n) factors
-     (factor? n m) (recur m (/ n m) (conj factors m))
-     :else (recur (inc m) n factors))))
+      (= number 1) factors
+      (factor? number prime) (recur (/ number prime) prime (conj factors prime))
+      :else (recur number (inc prime) factors))))
+
 
 (prime-factors 35)
 (prime-factors 24)
