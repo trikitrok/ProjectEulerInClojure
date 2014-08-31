@@ -20,11 +20,8 @@
     (for [x1 numbers x2 numbers]
       (* x1 x2))))
 
-(defn palindrome-products [lower higher]
-  (filter palindrome? (products lower higher)))
-
 (defn largest-palindrome-product [lower higher]
-  (apply max (palindrome-products lower higher)))
+  (apply max (filter palindrome? (products lower higher))))
 
 (largest-palindrome-product 10 99)
 (largest-palindrome-product 100 999)
