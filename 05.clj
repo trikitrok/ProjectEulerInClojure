@@ -66,3 +66,19 @@
 
 (smallest-positive-number-evenly-divisible-by-all 1 10)
 (smallest-positive-number-evenly-divisible-by-all 1 20)
+
+(defn greatest-common-divisor [a b]
+  (if (zero? b)
+    a
+    (greatest-common-divisor b (rem a b))))
+
+(defn least-common-multiple [a b]
+   (/ (* a b) (greatest-common-divisor a b)))
+
+(defn smallest-positive-number-evenly-divisible-by-all [from to]
+  (reduce
+    least-common-multiple
+    (range from (+ to 1))))
+
+(smallest-positive-number-evenly-divisible-by-all 1 10)
+(smallest-positive-number-evenly-divisible-by-all 1 20)
