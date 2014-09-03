@@ -26,13 +26,11 @@
 
 (defn greatest-product-and-n-digits [huge-num n]
   (let
-    [prod-n-digits-pair (map #(let [numbers (digits-to-numbers %)]
-                                [(reduce * numbers) numbers])
-                             (partition n 1 (str huge-num)))
-
-     max-prod (apply max  (map first prod-n-digits-pair))]
-
-    (filter #(= max-prod (first %)) prod-n-digits-pair)))
+    [prod-n-digits-pairs (map #(let [numbers (digits-to-numbers %)]
+                                 [(reduce * numbers) numbers])
+                              (partition n 1 (str huge-num)))
+     max-prod (apply max (map first prod-n-digits-pairs))]
+    (filter #(= max-prod (first %)) prod-n-digits-pairs)))
 
 (greatest-product-and-n-digits huge-num 4)
 (greatest-product-and-n-digits huge-num 13)
