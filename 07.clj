@@ -49,6 +49,8 @@
 (prime? 40000)
 (prime? 40000000)
 
+(last (take 10001 (filter prime? nums))) ; 104743
+
 (iterate #(vector (prime? (inc (second %))) (inc (second %))) [2 2])
 (filter #(first %) (iterate #(vector (prime? (inc (second %))) (inc (second %))) [2 2]))
 ;(last (take 10001 (filter #(first %) (iterate #(vector (prime? (inc (second %))) (inc (second %))) [2 2]))))
