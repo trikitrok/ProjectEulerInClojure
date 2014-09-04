@@ -4,12 +4,13 @@
             (cons prime primes))))
 
 (defn primes-below [n]
-  (apply
-    concat
-    (first
-     (drop-while
-      #(< (ffirst %) (Math/sqrt n))
-      (iterate sieve [(range 2 (inc n)) nil])))))
+  (let [sqrt-n (Math/sqrt n)]
+    (apply
+     concat
+     (first
+      (drop-while
+       #(< (ffirst %) sqrt-n)
+       (iterate sieve [(range 2 (inc n)) nil]))))))
 
 (defn sum-primes-below [n]
   (reduce + (primes-below n)))
