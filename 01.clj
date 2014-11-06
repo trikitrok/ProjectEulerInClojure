@@ -55,3 +55,23 @@
   (partial take-while (partial > num)))
 
 (reduce + ((below 10) all-quintuples-or-triples))
+
+(def sum (partial reduce +))
+
+(defn multiple-of [n]
+  (fn [x] (zero? (mod x n))))
+
+(def multiple-of-3? (multiple-of 3))
+
+(def multiple-of-5? (multiple-of 5))
+
+(sum
+ (for [x (range 1001)
+       :when (and (multiple-of-3? x)
+                  (multiple-of-5? x))]
+   x))
+
+(sum
+ (filter #(and (multiple-of-3? %)
+               (multiple-of-5? %))
+         (range 1 1001)))
